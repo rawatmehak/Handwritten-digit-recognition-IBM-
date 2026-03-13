@@ -48,7 +48,18 @@ model.compile(
 )
 
 
-model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
+history = model.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
+#graph
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+
+plt.title("Loss vs Epoch")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+
+plt.legend(["Training Loss", "Validation Loss"])
+plt.savefig("loss_graph.png")
+plt.show()
 
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print("Test Accuracy:", test_acc)
@@ -58,6 +69,6 @@ prediction = model.predict(X_test)
 print(np.argmax(prediction[0]))
 print("Actual:", y_test[0])
 
-model.save("model/digit_model.h5")
+model.save("Handwritten-digit-recognition/model/digit_model.h5")
 print("Model saved successfully!")
 
