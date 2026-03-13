@@ -91,7 +91,8 @@ python api.py
 
 The model predicts digits from handwritten input images with high confidence.
 
-(Add screenshots here if available)
+
+
 
 ---
 
